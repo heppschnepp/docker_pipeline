@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo 'builing....'
+                echo 'building....'
                 // Permission to execute
                 sh "chmod +x -R ${env.WORKSPACE}/../${env.JOB_NAME}/*.sh"
                 // Call SH
