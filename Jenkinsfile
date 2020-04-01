@@ -5,6 +5,7 @@ pipeline {
             steps {
                 echo 'preparing...'
                 step([$class: 'WsCleanup'])
+                checkout scm
             }
         }
         stage('build') {
