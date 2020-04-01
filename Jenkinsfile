@@ -3,29 +3,32 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                    echo 'builing....'
-                    sh build.sh
+                echo 'builing....'
+                // Permission to execute
+                sh "chmod +x -R ${env.WORKSPACE}/../${env.JOB_NAME}@script"
+                // Call SH
+                sh "${env.WORKSPACE}/../${env.JOB_NAME}@script/build.sh"
             }
         }
         
         stage('unit') {
             steps {
                 echo 'unit testing....'
-                sh unit.sh
+                sh "${env.WORKSPACE}/../${env.JOB_NAME}@script/unit.sh"
             }
         }
 
         stage('deploy') {
             steps {
                 echo 'deploying....'
-                sh deploy.sh
+                sh "${env.WORKSPACE}/../${env.JOB_NAME}@script/deploy.sh"
             }
         }
 
         stage('qa') {
             steps {
                 echo 'qa......'
-                sh quality.sh
+                sh "${env.WORKSPACE}/../${env.JOB_NAME}@script/quality.sh"
             }
         }    
     }
