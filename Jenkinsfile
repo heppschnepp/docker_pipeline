@@ -1,6 +1,12 @@
 pipeline {
     agent any
     stages {
+        stage('prep') {
+            steps {
+                echo 'preparing...'
+                step([$class: 'WsCleanup'])
+            }
+        }
         stage('build') {
             steps {
                 echo 'building....'
