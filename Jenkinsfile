@@ -4,25 +4,25 @@ pipeline {
 	
 	stage('build') {
         steps {
-                echo builing....
+                echo 'builing....'
                 sh build.sh
                 }
         }
 	
     stage('unit') {
         steps {
-            echo unit testing....
+            echo 'unit testing....'
             sh unit.sh
         }
 
     stage('deploy') {
         steps {
-            echo deploying....
+            echo 'deploying....'
             sh deploy.sh
         }
     stage('qa') {
         steps {
-            echo qa......
+            echo 'qa......'
             sh quality.sh
         }
         
